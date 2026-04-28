@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Alert, StyleSheet, Text, TextInput, TouchableHighlight, View, TouchableOpacity } from 'react-native';
 
-export default function App() {
+export function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const handleLogin = () => {
@@ -29,6 +29,7 @@ export default function App() {
           placeholder="Password"
           style={styles.input} 
           secureTextEntry={true}
+          textContentType='password'
           value={password}
           onChangeText={setPassword}
       />
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 5,
     borderWidth: 1,
     marginTop: 20,
+    color: 'black',
     paddingHorizontal: 10,
   },
   forgetPassword: {
