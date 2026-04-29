@@ -1,6 +1,7 @@
 import React from "react";
 import { DUMMY_POSTS } from "../constants/posts.js";
 import { StyleSheet, Text, View, FlatList, Image } from "react-native";
+import { PostItem } from "./PostItem.jsx";
 
 
 export function Posts() {
@@ -12,17 +13,16 @@ export function Posts() {
                 data = {DUMMY_POSTS}
                 keyExtractor = {(item)=> item.id}
                 renderItem={({item})=>{
-                    return ( <View style={styles.postContainer}>
-                        <Text style={styles.postTitle}>{item.title}</Text>
-                        <Text style={styles.postBody}>{item.body}</Text>
-                        <Image style={styles.postImage} source={{uri:item.imageUrl}} />
-                        <View style={styles.postFooter}>
-                            <Text style={{fontWeight:'700'}}>{item.author}</Text>
-                            <Text>{item.date}</Text>
-                            <Text>❤️{item.likes}</Text>
-                        </View>
-                        
-                    </View>)
+                    return ( 
+                        <PostItem 
+                            title={item.title} 
+                            body={item.body}
+                            imageUrl={item.imageUrl}
+                            author={item.author}
+                            date={item.date}
+                            likes={item.likes}  
+                        />
+                    )
                 }}
 
             /> 
