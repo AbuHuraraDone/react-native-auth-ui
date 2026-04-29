@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { Alert, StyleSheet, Text, TextInput, TouchableHighlight, View, TouchableOpacity } from 'react-native';
+import { GlobalStyles } from '../styles/GlobalStyles';
 
-export function Login() {
+export function Login({title}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const handleLogin = () => {
@@ -16,9 +17,10 @@ export function Login() {
   const handleForgetPassword = () => {
     Alert.alert('Forget Password', 'Password recovery is not implemented yet.');
   }
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.loginText}> User Login </Text>
+    <View style={[styles.container, GlobalStyles.BaseContainer, {margin:10, borderRadius: 15}]}>
+      <Text style={styles.loginText}> {title} </Text>
       <TextInput 
           placeholder="Username"
           style={styles.input} 

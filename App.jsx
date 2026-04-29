@@ -7,7 +7,7 @@ export default function App() {
     
   return (
     <View style={styles.container}>
-      <Login />
+      <Login title={"User Login Here"} />
     </View>
   );
 }
@@ -15,6 +15,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: 'blue',
   }
 });   
