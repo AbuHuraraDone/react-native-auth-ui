@@ -1,0 +1,47 @@
+export const DUMMY_POSTS = [
+  {
+    id: '1',
+    title: 'Exploring the Mountains',
+    body: 'Spent the weekend hiking through the rugged terrain. The view from the summit was absolutely breathtaking!',
+    author: 'Alex River',
+    date: '2026-04-20',
+    imageUrl: 'https://picsum.photos/id/10/400/200',
+    likes: 124,
+  },
+  {
+    id: '2',
+    title: 'Modern Architecture',
+    body: 'A deep dive into how glass and steel are redefining the city skylines of the 21st century.',
+    author: 'Jordan Smith',
+    date: '2026-04-22',
+    imageUrl: 'https://picsum.photos/id/1011/400/200',
+    likes: 89,
+  },
+  {
+    id: '3',
+    title: 'The Perfect Morning Coffee',
+    body: 'Is there anything better than the smell of freshly ground beans at 6:00 AM? Here is my secret recipe.',
+    author: 'Casey Bean',
+    date: '2026-04-25',
+    imageUrl: 'https://picsum.photos/id/425/400/200',
+    likes: 256,
+  },
+  {
+    id: '4',
+    title: 'React Native vs. Flutter',
+    body: 'The age-old debate continues. Today we look at performance, developer experience, and community support.',
+    author: 'Dev Master',
+    date: '2026-04-28',
+    imageUrl: 'https://picsum.photos/id/1/400/200',
+    likes: 542,
+  },
+  {
+    id: '5',
+    title: 'Urban Sunset',
+    body: 'Captured this amazing pink and orange sky while stuck in traffic today. Nature finds a way to shine.',
+    author: 'Skyler Sky',
+    date: '2026-04-29',
+    imageUrl: 'https://picsum.photos/id/1025/400/200',
+    likes: 10,
+  }
+];
