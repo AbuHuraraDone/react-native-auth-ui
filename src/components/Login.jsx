@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import { Alert, StyleSheet, Text, TextInput, TouchableHighlight, View, TouchableOpacity } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { GlobalStyles } from '../styles/GlobalStyles';
 
 export function Login({title}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const handleLogin = () => {
     if(username === '' || password === '') {
       Alert.alert('Error', 'Please enter both username and password.');
@@ -23,18 +25,23 @@ export function Login({title}) {
       <Text style={styles.loginText}> {title} </Text>
       <TextInput 
           placeholder="Username"
-          style={styles.input} 
+          style={styles.inputUsername} 
           value={username}
           onChangeText={setUsername}
       />
-      <TextInput 
-          placeholder="Password"
-          style={styles.input} 
-          secureTextEntry={true}
-          textContentType='password'
-          value={password}
-          onChangeText={setPassword}
-      />
+      <View style={styles.passwordContainer}>
+       <TextInput 
+           placeholder="Password"
+           style={styles.input} 
+           secureTextEntry={!showPassword}
+           textContentType='password'
+           value={password}
+           onChangeText={setPassword}
+       />
+        <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+          <Text>{showPassword ? "Show":"Hide"}</Text>
+        </TouchableOpacity>
+      </View>
       <TouchableOpacity style={styles.forgetPassword} onPress={handleForgetPassword}>
         <Text style={styles.forgetPasswordText}>Forget Password?</Text>
       </TouchableOpacity>
@@ -57,17 +64,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
   },
-  input:{
+  passwordContainer:{
+    flexDirection: 'row',
+    alignItems: 'center',
     width: '80%',
-    height: 50,
     borderColor: 'gray',
     borderRadius: 5,
     borderLeftWidth: 5,
     borderWidth: 1,
     marginTop: 20,
-    color: 'black',
     paddingHorizontal: 10,
   },
+  input:{
+    flex: 1,
+    height: 50,
+    color: 'black',
+  },
+  inputUsername:{ width: '80%', height: 50, borderColor: 'gray', borderRadius: 5, borderLeftWidth: 5, borderWidth: 1, marginTop: 20, color: 'black', paddingHorizontal: 10, },
   forgetPassword: {
     marginLeft: 40,
     alignSelf: 'flex-start',
