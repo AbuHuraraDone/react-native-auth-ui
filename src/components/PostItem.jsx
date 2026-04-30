@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useState} from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
 export const PostItem = ({ title, body, imageUrl, author, date, likes }) => {
+    const [likesCount, setLikesCount] = useState(likes);
+
     return (
         <View style={styles.postContainer}>
             <Text style={styles.postTitle}>{title}</Text>
@@ -10,7 +12,7 @@ export const PostItem = ({ title, body, imageUrl, author, date, likes }) => {
             <View style={styles.postFooter}>
                 <Text style={{fontWeight:'700'}}>{author}</Text>
                 <Text>{date}</Text>
-                <Text>❤️{likes}</Text>
+                <Button title={`❤️ Like ${likesCount}`} onPress={() => setLikesCount(likesCount + 1)} />
             </View>
         </View>
     );
