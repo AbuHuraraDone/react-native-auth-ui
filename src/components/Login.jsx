@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Alert, StyleSheet, Text, TextInput, TouchableHighlight, View, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { GlobalStyles } from '../styles/GlobalStyles';
@@ -19,6 +19,10 @@ export function Login({title}) {
   const handleForgetPassword = () => {
     Alert.alert('Forget Password', 'Password recovery is not implemented yet.');
   }
+
+  useEffect(()=>{
+    Alert.alert('Welcome', 'Welcome to the Login Screen!');
+  })
 
   return (
     <View style={[styles.container, GlobalStyles.BaseContainer, {margin:10, borderRadius: 15}]}>
@@ -80,7 +84,17 @@ const styles = StyleSheet.create({
     height: 50,
     color: 'black',
   },
-  inputUsername:{ width: '80%', height: 50, borderColor: 'gray', borderRadius: 5, borderLeftWidth: 5, borderWidth: 1, marginTop: 20, color: 'black', paddingHorizontal: 10, },
+  inputUsername:{
+    width: '80%',
+    height: 50,
+    borderColor: 'gray',
+    borderRadius: 5,
+    borderLeftWidth: 5,
+    borderWidth: 1, 
+    marginTop: 20, 
+    color: 'black', 
+    paddingHorizontal: 10, 
+  },
   forgetPassword: {
     marginLeft: 40,
     alignSelf: 'flex-start',

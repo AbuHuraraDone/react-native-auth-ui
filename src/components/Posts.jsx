@@ -1,13 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { DUMMY_POSTS } from "../constants/posts.js";
-import { StyleSheet, Text, View, FlatList, Image } from "react-native";
+import { StyleSheet, Text, View, FlatList, Image, Alert, Button } from "react-native";
 import { PostItem } from "./PostItem.jsx";
 
 
+
 export function Posts() {
-    
+    useEffect(()=>{
+        Alert.alert('Welcome', 'Welcome to the Posts Screen!');
+    },[])
+    // we pass [] as second argument to useEffect to ensure the alert is shown only once when the component mounts, not on every render.
+    // if we omit the second argument, the alert will be shown every time the component re-renders, which can lead to an infinite loop of alerts if the state changes inside the component.
     return (
         <View style={styles.container}>
+            <Button title="Refresh" onPress={()=>Alert.alert('Posts Refreshed', 'The posts have been refreshed!')} />
             <Text style={styles.postText}>Posts</Text>
             <FlatList 
                 data = {DUMMY_POSTS}
@@ -41,35 +47,5 @@ const styles = StyleSheet.create({
         margin: 20,
         fontSize: 24,
         fontWeight: 'bold',
-    },
-    postContainer: {
-        backgroundColor: '#f0f0f0',
-        padding: 15,
-        width: '90%',
-        marginBottom: 10,
-        alignSelf: 'center',
-        borderRadius: 10,
-    },
-    postTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 5,
-    },
-    postBody: {
-        fontSize: 14,
-        marginBottom: 10,
-        justifyContent: 'left',
-        lineHeight: 15,
-    },
-    postImage: {
-        width: '100%',
-        alignSelf: 'center',
-        height: 150,
-        borderRadius: 10,
-    },
-    postFooter: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 10,
-    },
+    }
 })
