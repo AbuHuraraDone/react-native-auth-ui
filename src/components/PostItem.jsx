@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Button } from "react-native";
 
 export const PostItem = ({ title, body, imageUrl, author, date, likes }) => {
     const [likesCount, setLikesCount] = useState(likes);
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     },
     postFooter: {
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
         marginTop: 10,
     },
