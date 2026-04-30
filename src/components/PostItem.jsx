@@ -1,8 +1,13 @@
-import React,{useState} from "react";
-import { StyleSheet, Text, View, Image, Button } from "react-native";
+import React,{useState, useEffect} from "react";
+import { StyleSheet, Text, View, Image, Button, Alert } from "react-native";
 
 export const PostItem = ({ title, body, imageUrl, author, date, likes }) => {
     const [likesCount, setLikesCount] = useState(likes);
+    useEffect(()=>{
+        if(likesCount > likes) {    
+            Alert.alert('Post Updated', `The post "${title}" now has ${likesCount} likes!`);
+        }
+    },[likesCount])
 
     return (
         <View style={styles.postContainer}>

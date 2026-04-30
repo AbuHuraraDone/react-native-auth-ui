@@ -1,11 +1,10 @@
-import React, {useEffect} from "react";
+import React, {useEffect,useState} from "react";
 import { DUMMY_POSTS } from "../constants/posts.js";
 import { StyleSheet, Text, View, FlatList, Image, Alert, Button } from "react-native";
 import { PostItem } from "./PostItem.jsx";
 
-
-
 export function Posts() {
+    const [showPosts, setShowPosts] = useState(true);
     useEffect(()=>{
         Alert.alert('Welcome', 'Welcome to the Posts Screen!');
     },[])
@@ -13,25 +12,28 @@ export function Posts() {
     // if we omit the second argument, the alert will be shown every time the component re-renders, which can lead to an infinite loop of alerts if the state changes inside the component.
     return (
         <View style={styles.container}>
-            <Button title="Refresh" onPress={()=>Alert.alert('Posts Refreshed', 'The posts have been refreshed!')} />
+            <View style={{flexDirection:'row', justifyContent:'space-around', margin:10}}>
+                <Button title="Refresh" onPress={()=>Alert.alert('Posts Refreshed', 'The posts have been refreshed!')} />
+                <Button title={`${showPosts? "Hide":"Show"} Posts`} onPress={()=>setShowPosts(!showPosts)} />
+            </View>
             <Text style={styles.postText}>Posts</Text>
-            <FlatList 
-                data = {DUMMY_POSTS}
-                keyExtractor = {(item)=> item.id}
-                renderItem={({item})=>{
-                    return ( 
-                        <PostItem 
-                            title={item.title} 
-                            body={item.body}
-                            imageUrl={item.imageUrl}
-                            author={item.author}
-                            date={item.date}
-                            likes={item.likes}  
-                        />
-                    )
-                }}
-
-            /> 
+            {showPosts &&
+                <FlatList 
+                    data = {DUMMY_POSTS}
+                    keyExtractor = {(item)=> item.id}
+                    renderItem={({item})=>{
+                        return ( 
+                            <PostItem 
+                                title={item.title} 
+                                body={item.body}
+                                imageUrl={item.imageUrl}
+                                author={item.author}
+                                date={item.date}
+                                likes={item.likes}  
+                            />
+                        )
+                    }}
+            /> }
         </View>
     );
 }
