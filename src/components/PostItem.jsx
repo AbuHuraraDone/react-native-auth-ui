@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         justifyContent: 'left',
         lineHeight: 15,
+        textAlign: 'justify',
     },
     postImage: {
         width: '100%',
