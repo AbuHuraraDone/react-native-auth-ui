@@ -3,6 +3,7 @@ import { StyleSheet, View,  } from 'react-native';
 import { Login } from './src/components/Login.jsx';
 import { Register } from './src/components/Register.jsx';
 import { Posts } from './src/components/Posts.jsx';
+import { Radio } from './src/utils/radio.jsx';
 
 export default function App() {
   
@@ -11,7 +12,8 @@ export default function App() {
     <View style={styles.container}>
       {/* <Login title={"User Login Here"} /> */}
       {/* <Register title={"User Register Here"} /> */}
-      <Posts />
+      {/* <Posts /> */}
+      <Radio />
     </View>
   );
 }
