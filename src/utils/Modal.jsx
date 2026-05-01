@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import { StyleSheet, Text, View, Modal, Button } from "react-native";
+import { StyleSheet, Text, View, Modal, Button, Platform } from "react-native";
+import { WebView } from "react-native-webview";
 export const ModelCode = () =>{
     const [showModal, setShowModal] = React.useState(false);
     return (
@@ -25,7 +26,7 @@ export const ModelCode = () =>{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: Platform.OS === 'ios' ? 'red' : 'green',
         justifyContent: 'center',
         alignItems: 'center',   
     },
