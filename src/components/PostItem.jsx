@@ -9,6 +9,13 @@ export const PostItem = ({ title, body, imageUrl, author, date, likes }) => {
         }
     },[likesCount])
 
+    useEffect(()=>{
+        return () =>{
+            Alert.alert('Post Unmounted', `The post "${title}" has been removed from the screen.`);
+        }
+        // This cleanup function will be called when the component is unmounted, allowing us to show an alert when the post is removed from the screen.
+    },[])
+
     return (
         <View style={styles.postContainer}>
             <Text style={styles.postTitle}>{title}</Text>
