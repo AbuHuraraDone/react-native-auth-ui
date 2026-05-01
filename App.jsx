@@ -4,6 +4,7 @@ import { Login } from './src/components/Login.jsx';
 import { Register } from './src/components/Register.jsx';
 import { Posts } from './src/components/Posts.jsx';
 import { Radio } from './src/utils/radio.jsx';
+import { ModelCode } from './src/utils/Modal.jsx';
 
 export default function App() {
   
@@ -13,7 +14,8 @@ export default function App() {
       {/* <Login title={"User Login Here"} /> */}
       {/* <Register title={"User Register Here"} /> */}
       {/* <Posts /> */}
-      <Radio />
+      {/* <Radio /> */}
+      <ModelCode />
     </View>
   );
 }
@@ -21,6 +23,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'blue',
+    backgroundColor: '#dbd8d8',
   }
 });   

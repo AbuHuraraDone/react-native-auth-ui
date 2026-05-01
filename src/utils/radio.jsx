@@ -2,32 +2,31 @@ import React, {useState} from "react";
 import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 
 export const Radio = () => {
-    const [selectedOption, setSelectedOption] = useState(1);
+    const radioOptions = [
+        {id:1, label:'JavaScript'},
+        {id:2, label:'Python'},
+        {id:3, label:'Java'},
+    ];
+    const [selectedOption, setSelectedOption] = useState(radioOptions[0].id);
     return (
         <View style={styles.container}>
             <Text style={{fontWeight:'700'}}>Radio Component</Text>
 
-            <TouchableOpacity onPress={() => setSelectedOption(1)} style={{margin:10}}>
-                <View style={{flexDirection:'row', alignItems:'center'}}>
-                    <View style={styles.radioButton} >
-                        {    
-                            selectedOption === 1 && <View style={styles.radioButtonSelected} />
-                        }
-                    </View>
-                    <Text>Option 1</Text>
-                </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => setSelectedOption(2)}>
-                <View style={{flexDirection:'row', alignItems:'center'}}>
-                    <View style={styles.radioButton} >
-                        {    
-                            selectedOption === 2 && <View style={styles.radioButtonSelected} />
-                        }
-                    </View>
-                    <Text>Option 2</Text>
-                </View>
-            </TouchableOpacity>
+            {  
+                radioOptions.map(option => (
+                    <TouchableOpacity onPress={() => setSelectedOption(option.id)} style={{margin:10}} key={option.id}>
+                        <View style={{flexDirection:'row', alignItems:'center'}}>
+                            <View style={styles.radioButton} >
+                                {    
+                                    selectedOption === option.id && <View style={styles.radioButtonSelected} />
+                                }
+                            </View>
+                            <Text>{option.label}</Text>
+                        </View>
+                    </TouchableOpacity>
+                ))
+            }
+        
         </View>
     );
 }
@@ -38,6 +37,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
+        
     },
     radioButton: {
         height: 20,
