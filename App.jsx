@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, StatusBar  } from 'react-native';
+import { StyleSheet, View, StatusBar, Button  } from 'react-native';
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -32,7 +32,17 @@ export default function App() {
         >
           <Stack.Screen name="Login" component={Login} options={{title:'User Login'}} />
           <Stack.Screen name="Register" component={Register} options={{title:'User Register'}} />
-          <Stack.Screen name="Posts" component={Posts} options={{title:'All Posts'}} />
+          <Stack.Screen name="Posts" component={Posts} 
+              options={({navigation})=>({
+                title:'Posts List',
+                headerRight: () => (
+                  <Button
+                    onPress={() => navigation.navigate('Login')}
+                    title="Logout"
+                  />
+                ),  
+              })} 
+          />
         </Stack.Navigator>
       </NavigationContainer>
   );

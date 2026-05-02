@@ -3,7 +3,9 @@ import { DUMMY_POSTS } from "../constants/posts.js";
 import { StyleSheet, Text, View, FlatList, Image, Alert, Button, ActivityIndicator } from "react-native";
 import { PostItem } from "./PostItem.jsx";
 
-export function Posts() {
+export function Posts(props) {
+    const {username} = props.route.params;
+
     const [showPosts, setShowPosts] = useState(true);
     const [loading, setLoading] = useState(false);
     useEffect(()=>{
@@ -28,7 +30,7 @@ export function Posts() {
                 <Button title="Refresh" onPress={()=>Alert.alert('Posts Refreshed', 'The posts have been refreshed!')} />
                 <Button title={`${showPosts? "Hide":"Show"} Posts`} onPress={handlePosts} />
             </View>
-            <Text style={styles.postText}>Posts</Text>
+            <Text style={styles.postText}>Posts {username}</Text>
             {loading && <ActivityIndicator size="large" color="#0000ff" />}
             {showPosts && 
                 <FlatList 

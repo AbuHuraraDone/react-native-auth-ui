@@ -11,7 +11,7 @@ export function Login(props) {
       Alert.alert('Error', 'Please enter both username and password.');
       return;
     }
-    props.navigation.navigate('Posts');
+    props.navigation.navigate('Posts', {username: username});
     setUsername('');
     setPassword('');
   }
