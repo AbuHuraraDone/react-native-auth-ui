@@ -2,7 +2,7 @@ import React,{ useState } from "react";
 import { GlobalStyles } from '../styles/GlobalStyles';
 import { StyleSheet, Text, View, TextInput, TouchableHighlight, Alert } from "react-native";
 
-export function Register({title}) {
+export function Register() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,7 +21,7 @@ export function Register({title}) {
 
     return (
         <View style={[styles.container, GlobalStyles.BaseContainer, {margin:10, borderRadius: 15}]}>
-            <Text style={styles.registerText}>{title}</Text>
+            <Text style={styles.registerText}> User Register Here </Text>
         
             <TextInput 
                 placeholder="Username"

@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Alert, StyleSheet, Text, TextInput, TouchableHighlight, View, TouchableOpacity } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { GlobalStyles } from '../styles/GlobalStyles';
 
-export function Login({title}) {
+export function Login(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +11,7 @@ export function Login({title}) {
       Alert.alert('Error', 'Please enter both username and password.');
       return;
     }
-    Alert.alert('Login Info', `Username: ${username}\nPassword: ${password}`);
+    props.navigation.navigate('Posts');
     setUsername('');
     setPassword('');
   }
@@ -22,11 +21,11 @@ export function Login({title}) {
 
   useEffect(()=>{
     Alert.alert('Welcome', 'Welcome to the Login Screen!');
-  })
+  },[])
 
   return (
     <View style={[styles.container, GlobalStyles.BaseContainer, {margin:10, borderRadius: 15}]}>
-      <Text style={styles.loginText}> {title} </Text>
+      <Text style={styles.loginText}> User Login Here </Text>
       <TextInput 
           placeholder="Username"
           style={styles.inputUsername} 
@@ -52,6 +51,10 @@ export function Login({title}) {
       <TouchableHighlight style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableHighlight>
+
+      <TouchableOpacity style={{marginTop: 20}} onPress={() => props.navigation.navigate('Register')}>
+        <Text style={{color: 'blue'}}>Don't have an account? Register</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -59,7 +62,7 @@ export function Login({title}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
